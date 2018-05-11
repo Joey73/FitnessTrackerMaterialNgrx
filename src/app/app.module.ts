@@ -8,8 +8,6 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './navigation/header/header.component';

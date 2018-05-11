@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators'
 import { Store } from '@ngrx/store';
 
-import { Exercise } from "./exercise.model";
+import { Exercise } from './exercise.model';
 import { UIService } from '../shared/ui.service';
 import * as UI from '../shared/ui.actions';
 import * as Training from './training.actions';
@@ -56,8 +56,8 @@ export class TrainingService {
                 date: new Date(),
                 state: 'completed'
             });
+            this.store.dispatch(new Training.StopTraining());
         });
-        this.store.dispatch(new Training.StopTraining());
     }
 
     cancelExercise(progress: number) {
@@ -69,8 +69,8 @@ export class TrainingService {
                 date: new Date(),
                 state: 'cancelled'
             });
+            this.store.dispatch(new Training.StopTraining());
         });
-        this.store.dispatch(new Training.StopTraining());
     }
 
     fetchCompletedOrCancelledExercises(){
@@ -79,7 +79,8 @@ export class TrainingService {
             .valueChanges()
             .subscribe((exercises: Exercise[]) => {
                 this.store.dispatch(new Training.SetFinishedTrainings(exercises));
-        }));
+            })
+        );
     }
 
     cancelSubscriptions(){
